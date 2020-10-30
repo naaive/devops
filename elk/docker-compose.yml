@@ -1,0 +1,35 @@
+version: '3.1'
+
+services:
+
+  elasticsearch:
+    image: elasticsearch:7.5.1
+    container_name: elasticsearch
+    environment:
+      - node.name=elasticsearch
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.seed_hosts=elasticsearch
+      - cluster.initial_master_nodes=elasticsearch
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./elasticsearchdata:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    network_mode: host
+
+  kibana:
+    image: kibana:7.5.1
+    network_mode: host
+    environment:
+      SERVER_NAME: "kibana.example.org"
+      ELASTICSEARCH_HOSTS: "http://localhost:9200"
+
+  logstash:
+    image: logstash:7.5.1
+    network_mode: host
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf

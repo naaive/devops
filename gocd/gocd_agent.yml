@@ -1,0 +1,11 @@
+version: '3.1'
+services:
+  gocd_agent:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - GO_SERVER_URL=http://192.168.204.128:8153/go
+    volumes:
+      - ./settings.xml:/usr/share/maven/conf/settings.xml
+      - /:/host
