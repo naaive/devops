@@ -17,8 +17,6 @@ services:
         hard: -1
     volumes:
       - ./elasticsearchdata:/usr/share/elasticsearch/data
-    ports:
-      - 9200:9200
     network_mode: host
 
   kibana:
