@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  ubuntu:
+    image: 'ubuntu:18.04'
+    network_mode: host
+    tty: true
