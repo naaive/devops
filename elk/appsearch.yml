@@ -25,7 +25,7 @@ services:
       - appsearch
     image: docker.elastic.co/enterprise-search/enterprise-search:7.13.1
     environment:
-      - elasticsearch.host='http://appsearch:9200'
+      - elasticsearch.host='http://elasticsearch:9200'
       - elasticsearch.username=elastic
       - elasticsearch.password=changeme
       - allow_es_settings_modification=true
@@ -41,7 +41,7 @@ services:
       - appsearch
     environment:
       SERVER_NAME: "kibana.example.org"
-      ELASTICSEARCH_HOSTS: "http://appsearch:9200"
+      ELASTICSEARCH_HOSTS: "http://elasticsearch:9200"
 
 networks:
   appsearch:
