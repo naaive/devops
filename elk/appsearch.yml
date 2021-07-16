@@ -2,19 +2,17 @@ version: '3.1'
 
 services:
 
-  elasticsearch:
-    ports:    
+  es:
+    ports:
       - 9200:9200
-    networks:
-      - appsearch
     image: elasticsearch:7.13.1
-    container_name: elasticsearch
+    container_name: es
     environment:
-      - node.name=elasticsearch
+      - node.name=es
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - discovery.seed_hosts=elasticsearch
-      - cluster.initial_master_nodes=elasticsearch
+      - discovery.seed_hosts=es
+      - cluster.initial_master_nodes=es
     ulimits:
       memlock:
         soft: -1
@@ -22,11 +20,9 @@ services:
 
   appsearch:
     container_name: appsearch
-    networks:
-      - appsearch
     image: docker.elastic.co/enterprise-search/enterprise-search:7.13.1
     environment:
-      - elasticsearch.host='http://elasticsearch:9200'
+      - elasticsearch.host='http://es:9200'
       - elasticsearch.username=elastic
       - elasticsearch.password=changeme
       - allow_es_settings_modification=true
@@ -39,12 +35,6 @@ services:
     image: jamesgarside/kibana
     ports:    
       - 5601:5601
-    networks:
-      - appsearch
     environment:
       SERVER_NAME: "kibana.example.org"
-      ELASTICSEARCH_HOSTS: "http://elasticsearch:9200"
-
-networks:
-  appsearch:
-    driver: bridge
+      ELASTICSEARCH_HOSTS: "http://es:9200"
