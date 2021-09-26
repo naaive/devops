@@ -5,4 +5,6 @@ services:
     image: 'projectorimages/projector-idea-u'
     network_mode: host
     user: root
+    volumes:
+      - "/usr/lib/jvm:/jvm"
 
