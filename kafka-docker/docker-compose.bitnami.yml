@@ -52,7 +52,7 @@ services:
   kafka-ui-lite:
     image: freakchicken/kafka-ui-lite
     ports:
-      - "8080:8080"
+      - "8080:8889"
 
 
   kowl:
