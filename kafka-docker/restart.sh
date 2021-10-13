@@ -1,0 +1,1 @@
+docker-compose -f docker-compose.bitnami.yml down && docker-compose -f docker-compose.bitnami.yml up -d
