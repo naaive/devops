@@ -3,7 +3,14 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="e1471b67-2089-4304-92cb-a8e4c8712ca9" name="remote">
-        <fileTransfer accessType="SFTP" host="172.20.160.169" port="9022" sshConfigId="c84c7902-23e7-4d0b-8ae9-058f67c242db" sshConfig="jeff@172.20.160.169:9022 password">
+        <fileTransfer accessType="SFTP" host="1.117.176.111" port="22" sshConfigId="c84c7902-23e7-4d0b-8ae9-058f67c242db" sshConfig="ubuntu@1.117.176.111:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="516bc0f7-a3b4-4d2e-8970-ba1895129127" name="tencent">
+        <fileTransfer accessType="SFTP" host="1.117.176.111" port="22" sshConfigId="c84c7902-23e7-4d0b-8ae9-058f67c242db" sshConfig="ubuntu@1.117.176.111:22 key" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
